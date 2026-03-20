@@ -280,28 +280,26 @@ halfTree(5)
   Esempio:
   tree(3)
 
-     *
-    ***
-   *****
-  *******
-
+      *
+     ***
+    *****
+   *******
+  *********
 */
 
 const tree = (n) => {
   const tree = document.getElementById("totalTree")
-
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < i + 1; j++) {
-      const span = document.createElement("span")
-      span.innerText = "*"
-      tree.appendChild(span)
-    }
-    const br = document.createElement("br")
-    tree.appendChild(br)
+  const br = document.createElement("br")
+  for (let i = 0; i <= n; i++) {
+    const span = document.createElement("span")
+    let spacebar = "_".repeat(n - i)
+    let fiocchiDiNeve = "*".repeat(i * 2)
+    span.innerHTML = `${spacebar}${fiocchiDiNeve}<br>`
+    tree.appendChild(span)
   }
 }
 
-tree(3)
+tree(7)
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
