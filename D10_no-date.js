@@ -144,14 +144,14 @@ onlyLetters(
 */
 
 const isThisAnEmail = (email) => {
-  if (email.includes("@") === true) {
+  if (email.includes("@") === true && email.includes(".") === true) {
     return true
   } else {
     return false
   }
 }
-const email = isThisAnEmail("mariorossi@mail.com")
-console.log(email)
+const email = isThisAnEmail("m@ariorossimail.com")
+console.log(email, "email")
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollDice" che riceve un numero come parametro.
