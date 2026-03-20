@@ -12,30 +12,54 @@ REGOLE
 /* ESERCIZIO A
   Crea una variabile chiamata "sum" e assegnaci il risultato della somma tra i valori 10 e 20.
 */
+a = 10
+b = 20
+const sum = a + b
+console.log(sum)
 
 /* ESERCIZIO B
   Crea una variabile chiamata "random" e assegnaci un numero casuale tra 0 e 20 (deve essere generato dinamicamente a ogni esecuzione).
 */
 
+const random = Math.floor(Math.random() * 20)
+console.log(random)
+
 /* ESERCIZIO C
   Crea una variabile chiamata "me" e assegnaci un oggetto contenente le seguenti proprietà: name = il tuo nome, surname = il tuo cognome, age = la tua età.
 */
 
+const me = {
+  name: "Gianni",
+  surname: "Rossi",
+  age: "32",
+}
+console.log(me)
+
 /* ESERCIZIO D
   Crea del codice per rimuovere programmaticamente la proprietà "age" dall'oggetto precedentemente creato.
 */
+delete me.age
+
+console.log(me)
 
 /* ESERCIZIO E
-  Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
+Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
 */
+
+me.skills = ["Javascript", "HTML", "CSS"] //<--- So che HTML e CSS non sono propriamente linguaggi di programmazione, ma mi sembrava brutto mettere solo JS
+console.log(me)
 
 /* ESERCIZIO F
-  Crea un pezzo di codice per aggiungere un nuovo elemento all'array "skills" contenuto nell'oggetto "me".
+Crea un pezzo di codice per aggiungere un nuovo elemento all'array "skills" contenuto nell'oggetto "me".
 */
+me.skills.push("gdScript")
+console.log(me.skills.length, me)
 
 /* ESERCIZIO G
-  Crea un pezzo di codice per rimuovere programmaticamente l'ultimo elemento dall'array "skills" contenuto nell'oggetto "me".
+Crea un pezzo di codice per rimuovere programmaticamente l'ultimo elemento dall'array "skills" contenuto nell'oggetto "me".
 */
+me.skills.pop()
+console.log(me.skills.length, me)
 
 // Funzioni
 
@@ -43,9 +67,26 @@ REGOLE
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
 
+const dice = () => {
+  const rollDice = Math.ceil(Math.random() * 6)
+  console.log(rollDice)
+}
+dice()
+
 /* ESERCIZIO 2
   Crea una funzione chiamata "whoIsBigger" che riceve due numeri come parametri e ritorna il maggiore dei due.
 */
+
+const whoIsBigger = (a, b) => {
+  if (a > b) {
+    return a
+  } else if (a === b) {
+    return "Stesso Valore"
+  } else {
+    return b
+  }
+}
+console.log(whoIsBigger(7, 3))
 
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
@@ -53,20 +94,64 @@ REGOLE
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 
+const splitMe = (string) => {
+  const newArray = string.split(" ")
+  console.log(newArray)
+}
+splitMe("Corso in full-stack Developer")
+
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
+
+const deleteOne = (string, boolean) => {
+  if (boolean === true) {
+    const varTrue = string.slice(1)
+    return varTrue
+  } else {
+    const varFalse = string.slice(0, -1)
+    return varFalse
+  }
+}
+
+const deleting = deleteOne("EPICODE", false)
+console.log(deleting)
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
 
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
+const onlyLetters = (string) => {
+  numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+
+  const noNumberArray = []
+
+  for (let i = 0; i < stringArray.length; i++) {
+    for (let j = 0; j < numArray.length; j++) {}
+  }
+
+  console.log(noNumberArray)
+}
+
+onlyLetters(
+  "Durante la mattinata ho bevuto 3 tazze di caffè, completato 7 delle mie attività prioritarie, risposto a 12 nuove email e fatto una camminata di 5 chilometri in 50 minuti per ricaricarmi.",
+)
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
+
+const isThisAnEmail = (email) => {
+  if (email.includes("@") === true) {
+    return true
+  } else {
+    return false
+  }
+}
+const email = isThisAnEmail("mariorossi@mail.com")
+console.log(email)
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollDice" che riceve un numero come parametro.
@@ -80,6 +165,16 @@ REGOLE
       values: [3, 3, 4]
   }
 */
+
+const rollDice = (n) => {
+  const values = []
+  for (let i = 0; i < n; i++) {
+    const result = dice()
+    values.push(result)
+  }
+  console.log(values)
+}
+rollDice(6)
 
 // Arrays & Oggetti
 
@@ -191,7 +286,8 @@ const movies = [
     Year: "2001",
     imdbID: "tt0120737",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
   },
 
   {
@@ -199,90 +295,103 @@ const movies = [
     Year: "2003",
     imdbID: "tt0167260",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
     Title: "The Lord of the Rings: The Two Towers",
     Year: "2002",
     imdbID: "tt0167261",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
     Title: "Lord of War",
     Year: "2005",
     imdbID: "tt0399295",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
     Title: "Lords of Dogtown",
     Year: "2005",
     imdbID: "tt0355702",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
     Title: "The Lord of the Rings",
     Year: "1978",
     imdbID: "tt0077869",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
   },
   {
     Title: "Lord of the Flies",
     Year: "1990",
     imdbID: "tt0100054",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg",
   },
   {
     Title: "The Lords of Salem",
     Year: "2012",
     imdbID: "tt1731697",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg",
   },
   {
     Title: "Greystoke: The Legend of Tarzan, Lord of the Apes",
     Year: "1984",
     imdbID: "tt0087365",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
   },
   {
     Title: "Lord of the Flies",
     Year: "1963",
     imdbID: "tt0057261",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg",
   },
   {
     Title: "The Avengers",
     Year: "2012",
     imdbID: "tt0848228",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   },
   {
     Title: "Avengers: Infinity War",
     Year: "2018",
     imdbID: "tt4154756",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
   },
   {
     Title: "Avengers: Age of Ultron",
     Year: "2015",
     imdbID: "tt2395427",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg"
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
   },
   {
     Title: "Avengers: Endgame",
     Year: "2019",
     imdbID: "tt4154796",
     Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
-  }
-];
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+  },
+]
