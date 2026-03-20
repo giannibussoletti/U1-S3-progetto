@@ -69,7 +69,7 @@ console.log(me.skills.length, me)
 
 const dice = () => {
   const rollDice = Math.ceil(Math.random() * 6)
-  console.log(rollDice)
+  return rollDice
 }
 dice()
 
@@ -124,17 +124,17 @@ console.log(deleting)
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 const onlyLetters = (string) => {
-  numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-
+  const newStringArray = string.split(" ")
   const noNumberArray = []
 
-  for (let i = 0; i < stringArray.length; i++) {
-    for (let j = 0; j < numArray.length; j++) {}
+  for (let i = 0; i < newStringArray.length; i++) {
+    if (isNaN(parseInt(newStringArray[i]))) {
+      noNumberArray.push(newStringArray[i])
+    }
   }
-
-  console.log(noNumberArray)
+  const noNumberJoined = noNumberArray.join(" ")
+  console.log(noNumberJoined)
 }
-
 onlyLetters(
   "Durante la mattinata ho bevuto 3 tazze di caffè, completato 7 delle mie attività prioritarie, risposto a 12 nuove email e fatto una camminata di 5 chilometri in 50 minuti per ricaricarmi.",
 )
@@ -170,9 +170,13 @@ const rollDice = (n) => {
   const values = []
   for (let i = 0; i < n; i++) {
     const result = dice()
-    values.push(result)
+    values.push(parseInt(result))
   }
-  console.log(values)
+  let sum = 0
+  for (let i = 0; i < values.length; i++) {
+    sum += values[i]
+  }
+  console.log(`i numeri usciti sono ${values} la cui somma è = ${sum}`)
 }
 rollDice(6)
 
